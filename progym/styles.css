@@ -1,0 +1,84 @@
+/* Base responsive styles for all pages */
+@media screen and (max-width: 768px) {
+    /* Navbar adjustments */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .navbar-brand {
+        margin: 0;
+        justify-content: center;
+    }
+
+    /* Common content adjustments */
+    .content {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    /* Form adjustments */
+    form {
+        width: 95%;
+        padding: 15px;
+    }
+
+    input, select {
+        width: 100%;
+    }
+
+    /* Table adjustments */
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    /* Button adjustments */
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .navbar-logo {
+        height: 40px;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    .content {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+    button,
+    input[type="submit"],
+    .nav-links a {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+} 

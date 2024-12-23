@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PROGYM - Your Fitness Journey Starts Here</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Basic styling */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            display: flex; /* Enable flexbox */
+            align-items: center; /* Vertically center items */
+            justify-content: space-between; /* Space between logo and nav links */
+        }
+
+        /* Style for the logo/title in navbar */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+            margin-left: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the logo */
+        .navbar-logo {
+            height: 60px; /* Adjust size as needed */
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            filter: brightness(0) invert(1); /* This makes the logo white */
+        }
+
+        /* Optional: Add hover effect to logo */
+        .navbar-brand:hover .navbar-logo {
+            transform: scale(1.05);
+        }
+
+        /* Container for navigation links */
+        .nav-links {
+            display: flex;
+            gap: 20px; /* Space between links */
+        }
+
+        /* Update existing navbar links style */
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: #333;
+        }
+
+        /* Remove the previous title style if it exists */
+        .title {
+            display: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            margin: 20px auto;
+            background: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+        }
+
+        .content::before,
+        .content::after {
+            display: none !important;
+        }
+
+        .motivation {
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 40px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.4;
+            position: relative;
+            padding: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .motivation::before,
+        .motivation::after {
+            content: '"';
+            font-size: 3em;
+            color: #42dcdb;
+            position: absolute;
+            opacity: 0.4;
+        }
+
+        .motivation::before {
+            left: -10px;
+            top: -10px;
+        }
+
+        .motivation::after {
+            right: -10px;
+            bottom: -30px;
+        }
+
+        .opening-hours-box {
+            background: linear-gradient(145deg, 
+                rgba(32, 32, 32, 0.95), 
+                rgba(0, 0, 0, 0.98));
+            padding: 10px 15px;
+            color: white;
+            border-radius: 20px;
+            width: 180px;
+            position: absolute;
+            right: 15px;
+            top: 65px;
+            transform-origin: top right;
+            animation: dropIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        /* New smooth drop-in animation */
+        @keyframes dropIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Subtle hover effect */
+        .opening-hours-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            background: linear-gradient(145deg, 
+                rgba(40, 40, 40, 0.95), 
+                rgba(0, 0, 0, 0.98));
+        }
+
+        /* Smooth entry for list items */
+        .opening-hours-box li {
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: slideInItems 0.4s ease forwards;
+        }
+
+        .opening-hours-box li:nth-child(1) { animation-delay: 0.2s; }
+        .opening-hours-box li:nth-child(2) { animation-delay: 0.3s; }
+        .opening-hours-box li:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes slideInItems {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Smooth icon animation */
+        .opening-hours-box .material-icons {
+            opacity: 0;
+            animation: fadeRotate 0.5s ease forwards;
+            display: inline-block;
+        }
+
+        @keyframes fadeRotate {
+            from {
+                opacity: 0;
+                transform: rotate(-45deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        /* Subtle pulse effect for the title */
+        .opening-hours-box h2 {
+            animation: pulseText 2s infinite alternate;
+        }
+
+        @keyframes pulseText {
+            from {
+                opacity: 0.9;
+            }
+            to {
+                opacity: 1;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        /* Keep other existing styles */
+        .opening-hours-box h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .opening-hours-box li {
+            margin-bottom: 10px;
+        }
+
+        .opening-hours-box li span {
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .opening-hours-box p {
+            margin: 3px 0;
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        .opening-hours-box u {
+            color: #fff;
+        }
+
+        .opening-hours-box i {
+            font-style: italic;
+        }
+
+        /* Add these new styles */
+        .background-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            animation: fadeInOut 15s infinite;
+            opacity: 0;
+        }
+
+        
+
+        @keyframes fadeInOut {
+            0%, 45%, 100% { opacity: 0; }
+            15%, 30% { opacity: 1; }
+        }
+
+        /* Update existing content style to ensure visibility */
+        .content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        /* Update navbar style */
+        .navbar {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .content-container {
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .content-container h2 {
+            font-size: 25px;
+            font-weight: lighter;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideFromLeft 1s ease forwards;
+        }
+
+        .content-container h1 {
+            font-size: 40px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .content-container h1:nth-child(2) {
+            animation: slideUp 1s ease forwards 0.5s;
+        }
+
+        .content-container h1:nth-child(3) {
+            animation: slideUp 1s ease forwards 0.8s;
+        }
+
+        .content-container p {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.2s;
+        }
+
+        .color-text {
+            position: relative;
+            display: inline-block;
+            color: #fff;
+        }
+
+        .color-text::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #fff;
+            transform: scaleX(0);
+            animation: underlineGrow 1s ease forwards 1.5s;
+        }
+
+        /* Animation keyframes */
+        @keyframes slideFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes underlineGrow {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* Hover effects */
+        .content-container h1:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        .color-text:hover {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: text-shadow 0.3s ease;
+        }
+
+        /* Update any glowing animations */
+        @keyframes glow {
+            from {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        /* Slide in animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Subtle glow animation */
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        /* Hover effect */
+        .opening-hours-box:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Individual item animations */
+        .opening-hours-box li {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .opening-hours-box li:nth-child(1) { animation-delay: 0.3s; }
+        .opening-hours-box li:nth-child(2) { animation-delay: 0.5s; }
+        .opening-hours-box li:nth-child(3) { animation-delay: 0.7s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(-180deg);
+            }
+            to {
+                transform: rotate(0);
+            }
+        }
+
+        /* Add subtle inner border glow */
+        .opening-hours-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(145deg, 
+                rgba(255, 255, 255, 0.1), 
+                rgba(255, 255, 255, 0.03));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                          linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, 
+                  linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Opening Hours Button */
+        .hours-button {
+            position: relative;
+            right: auto;
+            top: auto;
+            background: linear-gradient(145deg, rgba(32, 32, 32, 0.95), rgba(0, 0, 0, 0.98));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        .hours-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Opening Hours Box - Hidden by default */
+        .opening-hours-box {
+            position: absolute;
+            right: 20px;
+            top: 100%;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+        }
+
+        /* Create a wrapper for the button and box */
+        .hours-container {
+            position: relative;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        /* Update hover selectors */
+        .hours-container:hover .opening-hours-box {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .hours-container:hover .hours-button {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Add animation for items when box appears */
+        .hours-container:hover .opening-hours-box li {
+            animation: slideInItems 0.4s ease forwards;
+        }
+
+        /* Update navbar layout */
+        .navbar {
+            display: grid;
+            grid-template-columns: auto 1fr auto; /* Logo - Nav Links - Hours Button */
+            align-items: center;
+            padding: 15px;
+            gap: 20px;
+        }
+
+        /* Center nav links */
+        .nav-links {
+            display: flex;
+            justify-content: center; /* Center the links */
+            gap: 20px;
+            margin: 0 auto; /* Ensure center alignment */
+        }
+
+        /* Logo styles */
+        .navbar-brand {
+            margin-left: 20px;
+        }
+
+        /* Hours container (button and box) */
+        .hours-container {
+            margin-right: 20px;
+            position: relative;
+        }
+
+        /* Optional: adjust individual link spacing */
+        .nav-links a {
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Restore and enhance navbar icons */
+        .nav-links a {
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links a i.material-icons {
+            font-size: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Hover effect for links and icons */
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover i.material-icons {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Enhanced navbar button styles */
+        .nav-links a {
+            padding: 10px 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        /* Glow effect on hover */
+        .nav-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Icon animation */
+        .nav-links a i.material-icons {
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover i.material-icons {
+            transform: scale(1.2) rotate(5deg);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Underline effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+            opacity: 1;
+        }
+
+        /* Background pulse effect */
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 0.4s ease;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Active state */
+        .nav-links a:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Add subtle text scaling */
+        .nav-links a span {
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover span {
+            transform: scale(1.05);
+        }
+
+        /* Optional: Add focus state for accessibility */
+        .nav-links a:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Add to your existing styles section */
+        .map-container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .map-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .map-image {
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+        }
+
+        .map-image:hover {
+            transform: scale(1.02);
+        }
+
+        .map-details {
+            margin-top: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .map-details p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .map-details .material-icons {
+            color: #42dcdb;
+        }
+
+        /* Hero Section */
+        .location-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('la2ta.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+
+        .location-hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .location-hero p {
+            font-size: 1.2em;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Enhanced Map Styles */
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-image:hover .map-overlay {
+            opacity: 1;
+        }
+
+        .directions-btn {
+            background: #42dcdb;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .map-image:hover .directions-btn {
+            transform: translateY(0);
+        }
+
+        /* Location Details */
+        .location-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .detail-card {
+            background: linear-gradient(145deg, 
+                rgba(32, 32, 32, 0.95), 
+                rgba(0, 0, 0, 0.98));
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: linear-gradient(145deg, 
+                rgba(40, 40, 40, 0.95), 
+                rgba(0, 0, 0, 0.98));
+        }
+
+        .detail-card i {
+            font-size: 2em;
+            color: #42dcdb;
+            margin-bottom: 15px;
+        }
+
+        .detail-card h3 {
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .detail-card p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 5px 0;
+        }
+
+        /* Nearby Section */
+        .nearby-section {
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+
+        .nearby-section h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .nearby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .nearby-item {
+            background: linear-gradient(145deg, 
+                rgba(32, 32, 32, 0.95), 
+                rgba(0, 0, 0, 0.98));
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .nearby-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: linear-gradient(145deg, 
+                rgba(40, 40, 40, 0.95), 
+                rgba(0, 0, 0, 0.98));
+        }
+
+        .nearby-item i {
+            font-size: 2em;
+            color: #42dcdb;
+            margin-bottom: 10px;
+        }
+
+        .nearby-item p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 5px 0;
+        }
+
+        /* Contact Form */
+        .contact-section {
+            padding: 60px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #42dcdb;
+            outline: none;
+        }
+
+        .submit-btn {
+            background: #42dcdb;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #3bc5c4;
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Apply animations to elements */
+        .location-hero h1 {
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .location-hero p {
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .map-container h2 {
+            animation: fadeInLeft 1s ease forwards;
+        }
+
+        .map-image {
+            animation: scaleIn 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Animate detail cards */
+        .detail-card {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .detail-card:nth-child(1) { animation-delay: 0.3s; }
+        .detail-card:nth-child(2) { animation-delay: 0.5s; }
+        .detail-card:nth-child(3) { animation-delay: 0.7s; }
+
+        /* Animate nearby items */
+        .nearby-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .nearby-item:nth-child(1) { animation-delay: 0.2s; }
+        .nearby-item:nth-child(2) { animation-delay: 0.4s; }
+        .nearby-item:nth-child(3) { animation-delay: 0.6s; }
+        .nearby-item:nth-child(4) { animation-delay: 0.8s; }
+
+        /* Add hover animations */
+        .detail-card, .nearby-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .detail-card:hover, .nearby-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Static icon styling */
+        .detail-card i, .nearby-item i {
+            color: #42dcdb;
+            text-shadow: 0 0 10px rgba(66, 220, 219, 0.3);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Page load animation */
+        .content {
+            animation: pageLoad 1s ease;
+        }
+
+        @keyframes pageLoad {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced animations for existing elements */
+        .navbar {
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .navbar-logo {
+            animation: rotateLogo 1.2s ease-out;
+        }
+
+        .nav-links a {
+            opacity: 0;
+            animation: fadeSlideIn 0.5s ease forwards;
+        }
+
+        .nav-links a:nth-child(1) { animation-delay: 0.2s; }
+        .nav-links a:nth-child(2) { animation-delay: 0.3s; }
+        .nav-links a:nth-child(3) { animation-delay: 0.4s; }
+        .nav-links a:nth-child(4) { animation-delay: 0.5s; }
+        .nav-links a:nth-child(5) { animation-delay: 0.6s; }
+
+        /* Enhanced location hero animations */
+        .location-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .location-hero h1 {
+            animation: popScale 1s ease-out;
+        }
+
+        /* Enhanced map container animations */
+        .map-container img {
+            transition: transform 0.5s ease;
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        .detail-card {
+            animation: tiltIn 0.8s ease-out forwards;
+        }
+
+        .nearby-item {
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        /* New Keyframes */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateLogo {
+            from {
+                transform: rotate(-180deg) scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        @keyframes popScale {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes tiltIn {
+            from {
+                opacity: 0;
+                transform: perspective(500px) rotateX(30deg) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(500px) rotateX(0) translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.1);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(0.89);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hover animations for interactive elements */
+        .detail-card:hover i {
+            animation: pulse 1s infinite;
+        }
+
+        .nearby-item:hover i {
+            animation: spin 1s ease infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Add these styles to your existing CSS */
+        @media screen and (max-width: 768px) {
+            .map-container {
+                height: 300px;
+                width: 100%;
+            }
+
+            .location-info {
+                padding: 15px;
+            }
+
+            .contact-details {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">
+            <img src="logo.png" alt="PROGYM Logo" class="navbar-logo">
+            PROGYM
+        </a>
+        <div class="nav-links">
+            <a href="Home.html">
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </a>
+            <a href="About.html">
+                <i class="material-icons">info</i>
+                <span>About</span>
+            </a>
+            
+            <a href="customers.html">
+                <i class="material-icons">groups</i>
+                <span>Customers</span>
+            </a>
+            <a href="location.html">
+                <i class="material-icons">location_on</i>
+                <span>Location</span>
+            </a>
+            
+        </div>
+        <div class="hours-container">
+            <button class="hours-button">
+                <i class="material-icons">schedule</i>
+                Opening Hours
+            </button>
+            <div class="opening-hours-box">
+                <h2>Opening Hours</h2>
+                <ul>
+                    <li>
+                        <i class="material-icons">fitness_center</i>
+                        <div>
+                            <span>MONDAY --> FRIDAY</span>
+                            <p><i><u>Women:</u></i> 10:00 AM - 1:00 PM</p>
+                            <p><i><u>Men:</u></i> 3:00 PM - 10:00 PM</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="material-icons">fitness_center</i>
+                        <div>
+                            <span>SATURDAY</span>
+                            <p><i><u>Men:</u></i> 12:00 PM - 5:00 PM</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="material-icons">fitness_center</i>
+                        <div>
+                            <span>SUNDAY</span>
+                            <p>Closed</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- Hero Section -->
+        <div class="location-hero">
+            <h1>Visit Our Gym</h1>
+            <p>Your fitness journey starts here at PROGYM</p>
+        </div>
+
+        <!-- Enhanced Map Section -->
+        <div class="map-container">
+            <h2>Find Us Here</h2>
+            <div class="map-image">
+                <img src="location.jpeg" alt="PROGYM Location Map">
+                <div class="map-overlay">
+                    <button class="directions-btn" onclick="getDirections()">
+                        <i class="material-icons">directions</i>
+                        Get Directions
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Enhanced Location Details -->
+            <div class="location-details">
+                <div class="detail-card">
+                    <i class="material-icons">location_on</i>
+                    <h3>Address</h3>
+                    <p>Between Mahmoud Al Achek Service Station and Al Zahabiya</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="material-icons">directions_car</i>
+                    <h3>Landmarks</h3>
+                    <p>Near Bolt tech</p>
+                    <p>Next to Al Nabe Osmane Hotel</p>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="material-icons">store</i>
+                    <h3>Nearby</h3>
+                    <p>Al Zahabiya</p>
+                    <p>Supermarket ABC NEMR</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Facilities Near Us Section -->
+        <div class="nearby-section">
+            <h2>Nearby Facilities</h2>
+            <div class="nearby-grid">
+                <div class="nearby-item">
+                    <i class="material-icons">local_gas_station</i>
+                    <p>Service Station</p>
+                </div>
+                <div class="nearby-item">
+                    <i class="material-icons">hotel</i>
+                    <p>Hotel</p>
+                </div>
+                <div class="nearby-item">
+                    <i class="material-icons">shopping_cart</i>
+                    <p>Supermarket</p>
+                </div>
+                <div class="nearby-item">
+                    <i class="material-icons">store</i>
+                    <p>Local Shops</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getDirections() {
+            // Direct link to PROGYM's location
+            const progymLocation = "https://maps.app.goo.gl/SHQvtVExecadjguG7";
+            // Open the exact location in Google Maps
+            window.open(progymLocation, '_blank');
+        }
+    </script>
+</body>
+</html>
