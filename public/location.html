@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PROGYM - Your Fitness Journey Starts Here</title>
@@ -147,6 +147,30 @@
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
+        }
+
+        .opening-hours-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .opening-hours-box li {
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: slideInItems 0.4s ease forwards;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .opening-hours-box .material-icons {
+            opacity: 0;
+            animation: fadeRotate 0.5s ease forwards;
+            display: inline-block;
         }
 
         /* Subtle hover effect */
@@ -1261,6 +1285,357 @@
                 flex-direction: column;
             }
         }
+        /* Navbar and Responsive Layout Updates */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.hours-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .nav-links a span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hours-container {
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-logo {
+        height: 30px;
+    }
+
+    .hours-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .opening-hours-box {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Location hero section */
+    .location-hero {
+        padding: 40px 20px;
+        text-align: center;
+        height: auto;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1em;
+    }
+
+    /* Map section adjustments */
+    .map-container {
+        height: 300px;
+        margin: 20px 0;
+    }
+
+    .location-info-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 30px;
+    }
+
+    .location-details,
+    .contact-info {
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* Hours section */
+    .hours-section {
+        padding: 30px 20px;
+    }
+
+    .hours-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .hours-card {
+        padding: 15px;
+    }
+
+    /* Directions section */
+    .directions-section {
+        padding: 30px 20px;
+    }
+
+    .transport-options {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .transport-card {
+        padding: 15px;
+    }
+
+    /* Parking section */
+    .parking-section {
+        padding: 30px 20px;
+    }
+
+    .parking-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .parking-details {
+        width: 100%;
+    }
+
+    /* Nearby amenities */
+    .amenities-section {
+        padding: 30px 20px;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .amenity-card {
+        padding: 15px;
+    }
+
+    /* Contact form */
+    .contact-form-section {
+        padding: 30px 20px;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input,
+    textarea {
+        padding: 12px;
+    }
+
+    /* Virtual tour section */
+    .virtual-tour {
+        padding: 30px 20px;
+    }
+
+    .tour-container {
+        height: 300px;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8em;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hours-card h3,
+    .transport-card h3 {
+        font-size: 1.2em;
+    }
+
+    .map-container {
+        height: 250px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Improve touch targets */
+    .transport-card,
+    .hours-card,
+    .amenity-card {
+        min-height: 44px;
+    }
+
+    button,
+    .form-submit {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+
+    /* Add touch feedback */
+    .card-hover {
+        transition: transform 0.2s ease;
+    }
+
+    .card-hover:active {
+        transform: scale(0.98);
+    }
+
+    /* Improve form elements */
+    input,
+    textarea,
+    select {
+        font-size: 16px; /* Prevents iOS zoom */
+        padding: 12px;
+    }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    .location-hero {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Navbar responsive styles to match index.html */
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: relative;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        padding: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-links a {
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* Hide mobile menu button on larger screens */
+@media screen and (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -1269,6 +1644,11 @@
             <img src="logo.png" alt="PROGYM Logo" class="navbar-logo">
             PROGYM
         </a>
+
+        <button class="mobile-menu-btn">
+            <i class="material-icons">menu</i>
+        </button>
+        
         <div class="nav-links">
             <a href="index.html">
                 <i class="material-icons">home</i>
@@ -1369,36 +1749,21 @@
         </div>
 
         <!-- Facilities Near Us Section -->
-        <div class="nearby-section">
-            <h2>Nearby Facilities</h2>
-            <div class="nearby-grid">
-                <div class="nearby-item">
-                    <i class="material-icons">local_gas_station</i>
-                    <p>Service Station</p>
-                </div>
-                <div class="nearby-item">
-                    <i class="material-icons">hotel</i>
-                    <p>Hotel</p>
-                </div>
-                <div class="nearby-item">
-                    <i class="material-icons">shopping_cart</i>
-                    <p>Supermarket</p>
-                </div>
-                <div class="nearby-item">
-                    <i class="material-icons">store</i>
-                    <p>Local Shops</p>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     <script>
+
+
         function getDirections() {
             // Direct link to PROGYM's location
             const progymLocation = "https://maps.app.goo.gl/SHQvtVExecadjguG7";
             // Open the exact location in Google Maps
             window.open(progymLocation, '_blank');
         }
-    </script>
+
+</script>
+<script src="responsive.js"></script>
+
 </body>
 </html>

@@ -731,6 +731,170 @@
                 margin: 10px 0;
             }
         }
+
+        /* Navbar and Responsive Layout Updates */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navbar-logo {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.hours-container {
+    position: relative;
+    margin-left: 15px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .nav-links a span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hours-container {
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-logo {
+        height: 30px;
+    }
+
+    .hours-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .opening-hours-box {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+    }
+}
+.opening-hours-box .material-icons {
+            opacity: 0;
+            animation: fadeRotate 0.5s ease forwards;
+            display: inline-block;
+        }
+        .nav-links a i.material-icons {
+            font-size: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .nav-links a:hover i.material-icons {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        .nav-links a i.material-icons {
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .opening-hours-box ul {
+            list-style: none;  /* This removes the bullet points */
+            padding: 0;
+            margin: 0;
+        }
+        
+        .opening-hours-box li {
+            margin-bottom: 15px;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: slideInItems 0.4s ease forwards;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        .opening-hours-box p {
+            margin: 3px 0;
+            font-size: 10px;
+            line-height: 1.3;
+        }
     </style>
 </head>
 <link rel="stylesheet" href="styles.css">
@@ -740,6 +904,11 @@
             <img src="logo.png" alt="PROGYM Logo" class="navbar-logo">
             PROGYM
         </a>
+        
+        <button class="mobile-menu-btn">
+            <i class="material-icons">menu</i>
+        </button>
+
         <div class="nav-links">
             <a href="index.html">
                 <i class="material-icons">home</i>
@@ -749,17 +918,16 @@
                 <i class="material-icons">info</i>
                 <span>About</span>
             </a>
-            
             <a href="customers.html">
                 <i class="material-icons">groups</i>
                 <span>Customers</span>
             </a>
-            <a href="location.html">
+            <a href="Location.html">
                 <i class="material-icons">location_on</i>
                 <span>Location</span>
             </a>
-            
         </div>
+
         <div class="hours-container">
             <button class="hours-button">
                 <i class="material-icons">schedule</i>
@@ -770,6 +938,7 @@
                 <ul>
                     <li>
                         <i class="material-icons">fitness_center</i>
+                        
                         <div>
                             <span>MONDAY --> FRIDAY</span>
                             <p><i><u>Women:</u></i> 10:00 AM - 1:00 PM</p>
@@ -837,5 +1006,9 @@
         <div class="slide"></div>
         <div class="slide"></div>
     </div>
+
+    
+        
+    <script src="responsive.js"></script>
 </body>
 </html>
