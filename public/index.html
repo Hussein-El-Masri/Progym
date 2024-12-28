@@ -1225,6 +1225,19 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .opening-hours-box {
+        width: 90%; /* Ensures the box takes up 90% of the screen width */
+        transform: translateX(-50%); /* Centers the box horizontally */
+        position: absolute; /* Maintain its flow context */
+    }
+
+    body {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+}
+
+
     </style>
 </head>
 <link rel="stylesheet" href="styles.css">
