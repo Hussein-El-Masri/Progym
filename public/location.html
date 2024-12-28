@@ -1600,12 +1600,14 @@
 
     .nav-links {
         display: none;
-        width: 100%;
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: #333;
-        padding: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
     }
 
     .nav-links.active {
@@ -1617,7 +1619,7 @@
         padding: 15px;
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid black;
     }
 
     .mobile-menu-btn {
@@ -1681,15 +1683,15 @@
                         <i class="material-icons">fitness_center</i>
                         <div>
                             <span>MONDAY --> FRIDAY</span>
-                            <p><i><u>Women:</u></i> 10:00 AM - 1:00 PM</p>
-                            <p><i><u>Men:</u></i> 3:00 PM - 10:00 PM</p>
+                            <p><i><u>Women:</u></i> 9:00 AM - 11:00 AM <br> 3:30 PM - 5:00 PM</p>
+                            <p><i><u>Men:</u></i> 12:00 PM - 3:30 PM <br> 5:00 PM - 9:00 PM</p>
                         </div>
                     </li>
                     <li>
                         <i class="material-icons">fitness_center</i>
                         <div>
                             <span>SATURDAY</span>
-                            <p><i><u>Men:</u></i> 12:00 PM - 5:00 PM</p>
+                            <p><i><u>Men:</u></i> 11:00 AM - 4:00 PM</p>
                         </div>
                     </li>
                     <li>
