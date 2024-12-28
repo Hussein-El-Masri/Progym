@@ -1187,12 +1187,45 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+    /* Mobile responsive adjustments */
+    @media screen and (max-width: 768px) {
             .opening-hours-box {
-                width: 150px;
+                width: 90%;
+                left: 5%;
                 right: 5%;
             }
+        
         }
+        @media screen and (max-width: 480px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .navbar-logo {
+        height: 30px;
+    }
+
+    .hours-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .opening-hours-box {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .opening-hours-box {
+        width: 90%;
+        left: 5%;
+        margin: 0 auto; /* Center within the container */
+        position: relative; /* Ensure proper positioning */
+    }
+}
+
     </style>
 </head>
 <link rel="stylesheet" href="styles.css">
