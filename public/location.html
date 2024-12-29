@@ -1646,6 +1646,22 @@
         margin: 0; /* Center within the container */
     }
 }
+/* Update the main .opening-hours-box style */
+.opening-hours-box {
+    width: 250px; /* Increased from 180px */
+    right: 0; /* Changed from right: 15px */
+    left: auto; /* Added to ensure proper alignment */
+    transform-origin: top right;
+}
+
+/* Update the media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .opening-hours-box {
+        width: 90%; /* Changed from a fixed width to a percentage */
+        left: 5%; /* Adjusted to center the box */
+        right: 5%; /* Adjusted to center the box */
+    }
+}
 
     </style>
 </head>
