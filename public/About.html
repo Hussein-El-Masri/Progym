@@ -3440,7 +3440,25 @@
         margin-left: auto;
     }
 }
+@media screen and (max-width: 768px) {
+    .opening-hours-box {
+        width: 90%;
+        max-width: 200px;
+        right: 5%;
+        left: auto;
+        transform: none;
+    }
 
+    /* Adjust the positioning of the box when it's visible */
+    .hours-container:hover .opening-hours-box {
+        transform: translateY(0);
+    }
+
+    /* Ensure the hours container doesn't overflow */
+    .hours-container {
+        position: static;
+    }
+}
 
        
     </style>
