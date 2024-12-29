@@ -1747,6 +1747,34 @@
     }
 }
 
+/* Update the existing map-image class */
+.map-image {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px; /* Adjust this value as needed */
+    margin: 0 auto;
+}
+
+.map-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Add these media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .map-image {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .map-container {
+        padding: 20px;
+    }
+}
+
     </style>
 </head>
 <body>
