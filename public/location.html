@@ -1718,6 +1718,34 @@
         width: calc(50% - 10px); /* Two columns layout for larger mobile devices */
     }
 }
+/* Update the main .opening-hours-box style */
+.opening-hours-box {
+    width: 250px;
+    right: 0;
+    left: auto;
+    transform-origin: top right;
+}
+
+/* Update the media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .opening-hours-box {
+        width: 90%;
+        max-width: 150px;
+        right: 5%;
+        left: auto;
+        transform: none;
+    }
+
+    /* Adjust the positioning of the box when it's visible */
+    .hours-container:hover .opening-hours-box {
+        transform: translateY(0);
+    }
+
+    /* Ensure the hours container doesn't overflow */
+    .hours-container {
+        position: static;
+    }
+}
 
     </style>
 </head>
